@@ -287,16 +287,18 @@ def paraphrase():
         }), 500
 
 
+# Load transformer model on startup
+print("Starting HUMANAI backend...")
+print("Loading transformer model (this may take a few minutes on first run)...")
+model_loaded = load_transformer_model()
+
+if model_loaded:
+    print("✅ Transformer model loaded successfully!")
+else:
+    print("⚠️  Transformer model failed to load. Paraphrase endpoint will not be available.")
+
 if __name__ == '__main__':
-    # Load transformer model on startup
-    print("Starting HUMANAI backend...")
-    print("Loading transformer model (this may take a few minutes on first run)...")
-    model_loaded = load_transformer_model()
-    
-    if model_loaded:
-        print("✅ Transformer model loaded successfully!")
-    else:
-        print("⚠️  Transformer model failed to load. Paraphrase endpoint will not be available.")
-    
-    print("🚀 Starting Flask server...")
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    import os
+    port = int(os.environ.get('PORT', 5000))
+    print(f"🚀 Starting Flask server on port {port}...")
+    app.run(debug=False, host='0.0.0.0', port=port)
