@@ -16,6 +16,11 @@ function AppPage() {
   const cursorOutlineRef = useRef(null);
   const isHoveringRef = useRef(false);
 
+  // Set page title
+  useEffect(() => {
+    document.title = 'HUMANAI - Text Humanizer Tool';
+  }, []);
+
   // Custom cursor functionality
   useEffect(() => {
     // Create cursor elements
@@ -95,7 +100,7 @@ function AppPage() {
     setIsCopied(false);
 
     try {
-      const response = await fetch(`http://localhost:5000/api/paraphrase`, {
+      const response = await fetch(`https://humanai-qbfg.onrender.com/api/paraphrase`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -140,6 +145,13 @@ function AppPage() {
   return (
     <div className="app">
       <div className="container">
+        {/* Discontinued Notice */}
+        <div className="discontinued-banner">
+          <p className="discontinued-banner-text">
+            ⚠️ <strong>Notice:</strong> This project is no longer working / discontinued. It's now just a design showcase.
+          </p>
+        </div>
+        
         {/* Header */}
         <header className="header">
           <button onClick={handleBackToHome} className="back-btn">

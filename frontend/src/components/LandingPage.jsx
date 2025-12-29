@@ -12,6 +12,11 @@ function LandingPage() {
   const cursorOutlineRef = useRef(null);
   const isHoveringRef = useRef(false);
 
+  // Set page title
+  useEffect(() => {
+    document.title = 'HUMANAI - Transform AI Text into Human Writing';
+  }, []);
+
   // Custom cursor functionality
   useEffect(() => {
     // Create cursor elements
@@ -195,7 +200,7 @@ function LandingPage() {
 
         {/* Footer */}
         <footer className="landing-footer">
-          <p>Made by <a href="https:/instagram.com/liorrozen1" target="_blank" rel="noopener noreferrer" className="footer-name">LIOR ROZEN</a> with ❤️</p>
+          <p>Made by <a href="https://liorrozen.vercel.app" target="_blank" rel="noopener noreferrer" className="footer-name">LIOR ROZEN</a> with ❤️</p>
         </footer>
       </div>
       

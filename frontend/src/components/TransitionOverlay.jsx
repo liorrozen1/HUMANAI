@@ -72,6 +72,10 @@ function TransitionOverlay({ isVisible, onComplete }) {
   return (
     <div className="transition-overlay" ref={overlayRef}>
       <div className="transition-content">
+        <div className="discontinued-notice">
+          <p className="discontinued-text">⚠️ This project is no longer working / discontinued</p>
+          <p className="discontinued-subtext">It's now just a design showcase</p>
+        </div>
         <h1 className="loading-text">
           Loading{dots}
         </h1>
