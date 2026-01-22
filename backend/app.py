@@ -236,6 +236,44 @@ def health_check():
     })
 
 
+@app.route('/api/humanize', methods=['POST'])
+def humanize():
+    """Endpoint to humanize text using rule-based method"""
+    try:
+        data = request.get_json()
+        
+        if not data or 'text' not in data:
+            return jsonify({
+                "error": "Missing 'text' field in request body"
+            }), 400
+        
+        text = data['text']
+        intensity = data.get('intensity', 0.7)  # Default intensity
+        
+        # Validate intensity range
+        if not isinstance(intensity, (int, float)) or intensity < 0 or intensity > 1:
+            return jsonify({
+                "error": "Intensity must be a number between 0.0 and 1.0"
+            }), 400
+        
+        # Humanize the text using rule-based approach
+        result = humanize_text_rules(text, intensity)
+        
+        return jsonify({
+            "original_text": text,
+            "humanized_text": result,
+            "method": "rule-based",
+            "intensity": intensity,
+            "success": True
+        })
+        
+    except Exception as e:
+        return jsonify({
+            "error": f"Internal server error: {str(e)}",
+            "success": False
+        }), 500
+
+
 @app.route('/api/paraphrase', methods=['POST'])
 def paraphrase():
     """Endpoint to humanize text using transformer-based paraphrasing"""
