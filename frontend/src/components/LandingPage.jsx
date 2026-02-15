@@ -200,7 +200,7 @@ function LandingPage() {
 
         {/* Footer */}
         <footer className="landing-footer">
-          <p>Made by <a href="https://liorrozen.vercel.app" target="_blank" rel="noopener noreferrer" className="footer-name">LIOR ROZEN</a> with ❤️</p>
+          <p>Made by <a href="https://masalto.vercel.app/" target="_blank" rel="noopener noreferrer" className="footer-name">más alto</a> with ❤️</p>
         </footer>
       </div>
       
